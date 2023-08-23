@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: svc-pod
+  template:
+    metadata:
+      labels:
+        app: svc-pod
+    spec:
+      containers:
+        - name: flask-app-container
+          image: leonbd/flask_app:5
+          ports:
+          - containerPort: 8080
+
+            
+
